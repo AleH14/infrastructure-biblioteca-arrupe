@@ -1,0 +1,65 @@
+version: "3.9"
+services:
+  cloner:
+    image: alpine/git
+    container_name: cloner
+    volumes:
+      - ./:/workspace
+    entrypoint: /bin/sh
+    command: 
+      - -c
+      - |
+        cd /workspace && \
+        [ ! -d frontend ] && git clone https://github.com/AleH14/biblioteca-arrupe-frontend.git frontend || echo 'frontend ya existe' && \
+        [ ! -d backend ] && git clone https://github.com/AleH14/biblioteca-arrupe-backend.git backend || echo 'backend ya existe'
+    profiles:
+      - setup
+
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:4000
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: backend
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo:27017/miapp
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
