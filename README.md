@@ -45,6 +45,9 @@ docker-compose restart
 
 # Detener y limpiar
 docker-compose down -v
+
+#Reconstrucion de las imagenes sin cache
+docker-compose build --no-cache
 ```
 
 ## GitHub Actions
