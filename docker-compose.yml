@@ -44,7 +44,7 @@ services:
       - "4000:4000"
     environment:
       - NODE_ENV=development
-      - MONGO_URI=mongodb://mongo:27017/miapp
+      - MONGO_URI=mongodb://mongo:27017/biblioteca_arrupe_database
       - CHOKIDAR_USEPOLLING=true
     volumes:
       - ./backend:/app
@@ -57,7 +57,7 @@ services:
     container_name: mongo
     restart: always
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
       - mongo_data:/data/db
 
