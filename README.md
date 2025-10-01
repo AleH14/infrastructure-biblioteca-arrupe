@@ -29,7 +29,7 @@ docker-compose up -d
 
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:4000
-- **MongoDB**: mongodb://localhost:27017
+- **MongoDB**: mongodb://localhost:27018
 
 ### 3. Comandos útiles
 
@@ -72,7 +72,7 @@ Para el deployment automático, configura estos secrets en GitHub:
 - **cloner**: Clona automáticamente los repositorios
 - **frontend**: Next.js en modo desarrollo (puerto 3000)
 - **backend**: Node.js API (puerto 4000)
-- **mongo**: Base de datos MongoDB (puerto 27017)
+- **mongo**: Base de datos MongoDB (puerto 27018)
 
 ### Variables de entorno
 
