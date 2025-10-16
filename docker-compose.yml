@@ -25,7 +25,9 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
-      - NEXT_PUBLIC_API_URL=http://localhost:4000
+      - NEXT_PUBLIC_API_URL=http://backend:4000
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=biblioteca-arrupe-secret-key-2025
       - WATCHPACK_POLLING=true
       - CHOKIDAR_USEPOLLING=true
     volumes:
@@ -45,6 +47,9 @@ services:
     environment:
       - NODE_ENV=development
       - MONGO_URI=mongodb://mongo:27017/biblioteca_arrupe_database
+      - JWT_SECRET=biblioteca-arrupe-jwt-secret-key-2025
+      - JWT_EXPIRES_IN=1h
+      - FRONTEND_URL=http://localhost:3000
       - CHOKIDAR_USEPOLLING=true
     volumes:
       - ./backend:/app
