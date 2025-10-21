@@ -15,7 +15,18 @@ Este proyecto contiene la infraestructura de desarrollo para el sistema de bibli
 
 ## Inicio Rápido
 
-### 1. Clonar repositorios y configurar entorno
+### 1. Configurar variables de entorno
+
+```bash
+# Copiar archivo de ejemplo y configurar valores
+cp .env.example .env
+```
+
+**Importante**: Edita el archivo `.env` y cambia los valores por defecto, especialmente:
+- `JWT_SECRET`: Clave secreta para tokens JWT
+- `NEXTAUTH_SECRET`: Clave secreta para NextAuth
+
+### 2. Clonar repositorios y configurar entorno
 
 ```bash
 # Clonar los repositorios frontend y backend
@@ -25,13 +36,13 @@ docker-compose --profile setup up cloner
 docker-compose up -d
 ```
 
-### 2. Verificar servicios
+### 3. Verificar servicios
 
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:4000
 - **MongoDB**: mongodb://localhost:27018
 
-### 3. Comandos útiles
+### 4. Comandos útiles
 
 ```bash
 # Ver logs de todos los servicios
@@ -49,6 +60,29 @@ docker-compose down -v
 #Reconstrucion de las imagenes sin cache
 docker-compose build --no-cache
 ```
+
+## Configuración de Seguridad
+
+### Variables de entorno
+
+El sistema utiliza variables de entorno para configuración sensible. Copia `.env.example` a `.env` y configura:
+
+```bash
+# Variables de seguridad (CAMBIAR EN PRODUCCIÓN)
+JWT_SECRET=your-super-secret-jwt-key-here
+NEXTAUTH_SECRET=your-nextauth-secret-key-here
+
+# URLs y configuración
+FRONTEND_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://backend:4000
+NEXTAUTH_URL=http://localhost:3000
+MONGO_URI=mongodb://mongo:27017/biblioteca_arrupe_database
+```
+
+**⚠️ Seguridad**: 
+- Nunca incluyas el archivo `.env` en control de versiones
+- Cambia las claves secretas en producción
+- Usa claves largas y aleatorias (mínimo 32 caracteres)
 
 ## GitHub Actions
 
