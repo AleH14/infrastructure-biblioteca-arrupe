@@ -33,6 +33,7 @@ Thumbs.db
 frontend/node_modules/
 backend/node_modules/
 
+
 # Build outputs
 frontend/.next/
 frontend/out/
