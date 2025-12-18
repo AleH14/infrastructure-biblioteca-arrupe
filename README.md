@@ -74,8 +74,7 @@ NEXTAUTH_SECRET=your-nextauth-secret-key-here
 
 # URLs y configuración
 FRONTEND_URL=http://localhost:3000
-NEXT_PUBLIC_API_URL=http://backend:4000
-NEXTAUTH_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:4000
 MONGO_URI=mongodb://mongo:27017/biblioteca_arrupe_database
 ```
 
