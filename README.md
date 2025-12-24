@@ -17,6 +17,8 @@ Este proyecto contiene la infraestructura de desarrollo para el sistema de bibli
 
 ### 1. Configurar variables de entorno
 
+>[!IMPORTANT]
+>Por cada repositorio hacer este comando este repositorio, backend y frontend
 ```bash
 # Copiar archivo de ejemplo y configurar valores
 cp .env.example .env
@@ -24,7 +26,7 @@ cp .env.example .env
 
 **Importante**: Edita el archivo `.env` y cambia los valores por defecto, especialmente:
 - `JWT_SECRET`: Clave secreta para tokens JWT
-- `NEXTAUTH_SECRET`: Clave secreta para NextAuth
+
 
 ### 2. Clonar repositorios y configurar entorno
 
